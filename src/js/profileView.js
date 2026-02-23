@@ -1,16 +1,19 @@
 
 export function renderProfile(userData, userRepos, container) {
-    
-    const repositoriesHTML = userRepos.length > 0 ? userRepos.map(repo =>`
-        <div class="repository-card">
-        <h3>${repo.name}</h3>
-        <div class="repository-stats">
+
+    const repositoriesHTML = userRepos && userRepos.length > 0 
+  ? userRepos.map(repo => `
+      <a href="${repo.html_url}" target="_blank" class="repository-card">
+         <h3>${repo.name}</h3>
+         <div class="repository-stats">
             <span>⭐Stars: ${repo.stargazers_count}</span>
-            <span>🍴forks: ${repo.forks_count}</span>
-             <span>👀 watchers: ${repo.watchers_count}</span>
-              <span>💻language: ${repo.language_ || 'Náo informado'}</span>  
-        </div>
-            `).join('') : `<p>Nenhum repositório encontrado.</p>`;
+            <span>🍴Forks: ${repo.forks_count}</span>
+            <span>👀 Watchers: ${repo.watchers_count}</span>
+            <span>💻Language: ${repo.language || 'Não informado'}</span>  
+         </div>
+      </a>
+    `).join('')
+  : `<p>Nenhum repositório encontrado.</p>`;
 
     container.innerHTML = `
         <div class="profile-card">
