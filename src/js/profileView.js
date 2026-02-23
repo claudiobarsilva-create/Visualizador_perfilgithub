@@ -10,7 +10,7 @@ export function renderProfile(userData, userRepos, container) {
             <span>🍴Forks: ${repo.forks_count}</span>
             <span>👀 Watchers: ${repo.watchers_count}</span>
             <span>💻Language: ${repo.language || 'Não informado'}</span>  
-         </div>
+            </div>
       </a>
     `).join('')
   : `<p>Nenhum repositório encontrado.</p>`;
